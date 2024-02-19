@@ -1,0 +1,26 @@
+﻿
+
+<div class="image-uploader">
+    @if (HasData)
+    {
+        <div style="max-width:160px;display:flex;flex-direction:column">
+            <img src=@imageString alt="" width="@Width">
+            <button type="button" class="btn btn-warning btn-block" @onclick=@RemoveImage>
+                <i class="fa fa-times-circle"></i> Supprimer
+            </button>
+        </div>
+    }
+    else
+    {
+        if (hasError)
+        {
+            <div class="alert alert-warning">
+                @errorMessage
+            </div>
+        }
+        <button type="button" onclick="document.getElementById('profilImage').click()" class="btn">
+            <img src="@EmptyImage" width="80"/>
+        </button>
+        <InputFile id="profilImage" class="flex-fill" accept="image/*" OnChange="HandleImage" hidden/>
+    }
+</div>

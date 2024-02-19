@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+<EditForm Model=@newLab OnValidSubmit=@createLab>
+    <DataAnnotationsValidator />
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            Nouveal laboratoire.
+        </h3>
+    </div>
+    <div class="card-body">
+        <ValidationSummary />
+        <div>
+            <label>Nom du laboratoire</label>
+            <input class="form-control" @bind=@newLab.Nom/>
+        </div>
+        <div>
+            <label>Acronyme du laboratoire</label>
+            <input class="form-control" @bind=@newLab.Acronyme/>
+        </div>
+        <div>
+            <label>Adresse du laboratoire</label>
+            <input class="form-control" @bind=@newLab.Adresse/>
+        </div>
+        <div>
+            <label>Email du laboratoire</label>
+            <input class="form-control" @bind=@newLab.Email/>
+        </div>
+    </div>
+    <button type="submit"  class="btn btn-success" >Enregistrer</button>
+    
+</div>
+</EditForm>

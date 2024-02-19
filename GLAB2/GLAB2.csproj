@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GLab.Apps\GLab.Apps.csproj" />
+    <ProjectReference Include="..\GLab.Domains\GLab.Domains.csproj" />
+    <ProjectReference Include="..\GLab.Impl\GLab.Impl.csproj" />
+    <ProjectReference Include="..\GLAB.UI\GLAB.UI.csproj" />
+  </ItemGroup>
+
+</Project>

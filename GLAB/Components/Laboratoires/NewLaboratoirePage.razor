@@ -1,0 +1,18 @@
+﻿@page "/newlab"
+@using GLAB.Models
+@using Ids.FilesUI.Views
+<h3>NewLaboratoirePage</h3>
+
+<div>
+    <ImageUploader Image=newLaboratoire.Logo OnFileChanged="handleImage"/>
+</div>
+
+@code {
+    private Laboratoire newLaboratoire = new Laboratoire();
+
+    private void handleImage(byte[] logo)
+    {
+        newLaboratoire.Logo = logo;
+        StateHasChanged();
+    }
+}

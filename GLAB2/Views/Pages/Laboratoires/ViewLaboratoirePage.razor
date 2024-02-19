@@ -1,0 +1,45 @@
+﻿@page "/labos/byid/{Id}"
+@using GLab.Apps.Laboratoires
+@using GLab.Domains.Models.Laboratoires
+
+@inject ILabService labService
+
+<PageHeader SubTitle=@lab.Nom Title=@lab.Acronyme></PageHeader>
+@if (lab is null)
+{
+    <h3 class="text-danger">Aucun laboratoire</h3>
+}
+else
+{
+    <table>
+        <tr>
+            <td class="font-weight-bold">Id</td>
+            <td>@lab.Id</td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">Adresse</td>
+            <td>@lab.Adresse</td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">Email</td>
+            <td>@lab.Email</td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">Website</td>
+            <td>@lab.WebSite</td>
+        </tr>
+    </table>
+
+}
+
+@code {
+    [Parameter]public  required string Id{ get; set; }
+
+    private Laboratoire lab;
+
+    protected override async Task OnInitializedAsync()
+    {
+        lab = await labService.GetLaboratoireById(Id);
+    }
+
+}

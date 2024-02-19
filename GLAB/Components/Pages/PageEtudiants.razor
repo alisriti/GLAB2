@@ -1,0 +1,25 @@
+﻿@page "/etudiants"
+@using System.Data.SqlClient
+@using System.Data
+@using GLAB.Components.Etudiants
+@using GLAB.Services.Etudiants
+
+<h3>Etudiants</h3>
+
+<EtudiantList Etudiants="etudiants"/>
+
+<button type="button" @onclick="getEtudiants">Afficher les etudiants</button>
+@code {
+
+
+    private List<Etudiant> etudiants;
+
+    private async Task getEtudiants()
+    {
+        EtudiantService etudiantService = new EtudiantService();
+        etudiants = await etudiantService.GetEtudiants();
+
+    }
+
+
+}

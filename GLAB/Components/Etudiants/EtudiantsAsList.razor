@@ -1,0 +1,15 @@
+﻿@using GLAB.Components.Pages
+
+
+    
+        <ul>
+            @foreach (Etudiant etudiant in Etudiants)
+            {
+                <li>@etudiant.Id : @etudiant.Nom @etudiant.Prenom</li>
+            }
+        </ul>
+   
+@code {
+    [Parameter]
+    public List<Etudiant> Etudiants { get; set; }
+}

@@ -1,0 +1,21 @@
+﻿.mycard {
+    max-width: 300px;
+    border: 1px solid #000000;
+    padding: 0.25rem;
+    font-size: 0.85rem;
+}
+    .mycard .mycard-header {
+        border-bottom: 1px solid #000000;
+    }
+    .mycard .mycard-header label {
+        font-size: 16px;
+        color: dimgray;
+        font-weight: 500;
+    }
+    .mycard .mycard-body {
+        padding: 1rem;
+    }
+.mycard .mycard-footer {
+    border-top: 1px solid #000000;
+    padding: 0.25rem;
+}

@@ -1,0 +1,21 @@
+﻿@using GLAB.Components.Pages
+        <table class="table">
+            <tr>
+                <td>Id</td>
+                <td>Nom</td>
+                <td>Prenom</td>
+            </tr>
+            @foreach (Etudiant etudiant in Etudiants)
+            {
+                <tr>
+                    <td>@etudiant.Id</td>
+                    <td>@etudiant.Nom</td>
+                    <td>@etudiant.Prenom</td>
+                </tr>
+            }
+        </table>
+   
+@code {
+    [Parameter]
+    public required List<Etudiant> Etudiants { get; set; }
+}

@@ -1,0 +1,34 @@
+﻿
+@using GLab.Apps.Laboratoires
+@inject ILabService laboService
+@inject NavigationManager navManager
+
+@page "/labos"
+<PageHeader 
+    Title="Liste des laboratoires" 
+    SubTitle="Université de Biskra"/>
+
+<button @onclick=@getLabos>Liste des laboratoires</button>
+
+@if (string.IsNullOrWhiteSpace(errorMessage) == false)
+{
+    <h2 class="text-danger">@errorMessage</h2>
+}
+
+
+
+<ListLabComp Laboratoires=@labos OnLabSelected=@gotoLab/>
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<MyCard Title="Liste des laboratoires" ShowFooter="false">
+    <CardBody>
+        <ListLabComp Laboratoires=@labos OnLabSelected=@gotoLab/>
+    </CardBody>
+</MyCard>

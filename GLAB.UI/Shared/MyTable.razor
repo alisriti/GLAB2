@@ -1,0 +1,17 @@
+﻿@typeparam T
+
+<table>
+    <thead>
+    <tr style="font-weight: 600">
+        @TableHeader
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (T item in Items)
+        {
+            <tr>
+                @RowTemplate(item)
+            </tr>
+        }
+    </tbody>
+</table>

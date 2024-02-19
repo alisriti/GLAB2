@@ -1,0 +1,22 @@
+﻿<div>
+    @if (File.HasData)
+    {
+        <div class="d-flex">
+            <label class="m-0">@displayedName</label>
+            <button type="button" class="close ml-1" @onclick="RemoveFile">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+    }
+    else
+    {
+        if (hasError)
+        {
+            <div class="alert alert-warning">
+                @errorMessage
+            </div>
+        }
+        <button type="button" disabled=@isUploading onclick="document.getElementById('@Id').click()" class=@uplodadingStyle>@uploadingText</button>
+        <InputFile id=@Id class="flex-fill" accept=@Accept OnChange="HandleFile" hidden/>
+    }
+</div>

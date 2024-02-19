@@ -1,0 +1,29 @@
+﻿@using GLab.Domains.Models.Laboratoires
+
+@if (Laboratoires is null)
+{
+    <h3 class="text-danger">Liste nulle</h3>
+}
+else
+{
+    if (Laboratoires.Any())
+    {
+        <MyTable Items="Laboratoires">
+            <TableHeader>
+                <th style="font-weight: 600; color:crimson">Acronyme</th>
+                <th>Nom</th>
+                <th>Email</th>
+            </TableHeader>
+            <RowTemplate  Context="lab">
+                <td>@lab.Acronyme</td>
+                <td>@lab.Nom</td>
+                <td>@lab.Email</td>
+            </RowTemplate>
+        </MyTable>
+    }
+    else
+    {
+        <h3 class="text-warning">liste vide</h3>
+    }
+}
+

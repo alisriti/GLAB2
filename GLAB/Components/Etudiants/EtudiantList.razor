@@ -1,0 +1,40 @@
+﻿@using GLAB.Components.Pages
+
+@if (Etudiants is null)
+{
+    <h6 class="text-danger">Liste nulle</h6>
+}
+else
+{
+    if (Etudiants.Any())
+    {
+        
+        <button @onclick="toggleView">@label</button>
+
+        @if (asList)
+        {
+            <EtudiantsAsList Etudiants="Etudiants"></EtudiantsAsList>
+        }
+        else
+        {
+            <EtudiantsAsTable Etudiants="Etudiants"></EtudiantsAsTable>
+        }
+    }
+    else
+    {
+        <h6 class="text-warning">Liste vide</h6>
+    }
+}
+@code {
+    [Parameter]
+    public List<Etudiant>? Etudiants { get; set; }
+
+    bool asList = true;
+    string label => asList? "afficher table" : "afficher liste";
+
+    private void toggleView()
+    {
+        asList = !asList;
+        StateHasChanged();
+    }
+}
