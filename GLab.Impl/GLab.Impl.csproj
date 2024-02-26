@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GLab.Apps\GLab.Apps.csproj" />
     <ProjectReference Include="..\GLAB.Infra\GLAB.Infra.csproj" />
+    <ProjectReference Include="..\Users.Infra\Users.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLAB.Infra", "..\GLAB.Infra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLAB.UI", "..\GLAB.UI\GLAB.UI.csproj", "{15BFCC69-A2DA-4920-BA47-AD3C238E150A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{824BDAD1-7D17-4DBE-9280-37FF0B588372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.Infra", "..\Users.Infra\Users.Infra.csproj", "{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +49,17 @@ Global
 		{15BFCC69-A2DA-4920-BA47-AD3C238E150A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15BFCC69-A2DA-4920-BA47-AD3C238E150A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15BFCC69-A2DA-4920-BA47-AD3C238E150A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B2DA605-35A9-492F-83C3-D3C9BBDC1134} = {824BDAD1-7D17-4DBE-9280-37FF0B588372}
+		{76EF78B3-D5FB-4E23-96BB-006B27F5AC90} = {824BDAD1-7D17-4DBE-9280-37FF0B588372}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BF8471F3-3256-418E-8D56-D80D5D8CCA67}

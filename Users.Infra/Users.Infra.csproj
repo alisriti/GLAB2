@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GLab.Domains\GLab.Domains.csproj" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\" />
-    <Folder Include="Shared\" />
+    <ProjectReference Include="..\GLab.Domains\GLab.Domains.csproj" />
   </ItemGroup>
 
 </Project>
