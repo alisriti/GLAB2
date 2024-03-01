@@ -1,8 +1,12 @@
-﻿namespace GLab.Apps.Accounts;
+﻿using GLab.Domains.Models.Users;
+
+namespace GLab.Apps.Accounts;
 
 public interface IAccountService
 {
     Task<LoginStatus> CheckCredentials(string userName, string password);
+
+    Task<LoginClaims?> GetUserClaims(string userId);
 }
 
 public enum LoginStatus

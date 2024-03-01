@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GLab.Domains.Models.Users
+﻿namespace GLab.Domains.Models.Users
 {
     public class User
     {

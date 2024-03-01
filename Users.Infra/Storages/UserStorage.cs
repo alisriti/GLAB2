@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GLab.Domains.Models.Laboratoires;
+﻿using System.Data;
 using GLab.Domains.Models.Users;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +14,7 @@ namespace Users.Infra.Storages
             connectionString = configuration.GetConnectionString("IdentityDB");
         }
 
-        public async Task<User> SelectUserById(string userId)
+        public async Task<User?> SelectUserById(string userId)
         {
             await using var connection = new SqlConnection(connectionString);
             SqlCommand cmd = new("select * from USERS where UserId = @aUserId", connection);

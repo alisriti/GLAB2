@@ -1,10 +1,6 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using System.Reflection.Metadata.Ecma335;
-using GLab.Apps.Laboratoires;
+﻿using GLab.Apps.Laboratoires;
 using GLab.Domains.Models.Laboratoires;
 using GLAB.Infra.Storages;
-using Microsoft.Extensions.Configuration;
 
 namespace GLab.Impl.Services.Laboratoires
 {

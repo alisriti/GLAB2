@@ -15,12 +15,12 @@ public class UserService : IUserService
         passwordHasher = new PasswordHasher();
     }
 
-    public async Task<User> GetUserById(string userId)
+    public async Task<User?> GetUserById(string userId)
     {
         return await userStorage.SelectUserById(userId);
     }
 
-    public async Task<User> GetUserByUserName(string userName)
+    public async Task<User?> GetUserByUserName(string userName)
     {
         return await userStorage.SelectUserByUserName(userName);
     }
@@ -29,5 +29,17 @@ public class UserService : IUserService
     {
         string hashedPassword = await userStorage.SelectUserPassword(userId);
         return passwordHasher.VerifyHashedPassword(hashedPassword, password);
+    }
+
+    public async Task<List<ApplicationRole>> GetRoles()
+    {
+        return new List<ApplicationRole>()
+        {
+            new ApplicationRole()
+            {
+                RoleId = 3,
+                RoleName = "TeamMember"
+            }
+        };
     }
 }

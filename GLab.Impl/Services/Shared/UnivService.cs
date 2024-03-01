@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GLab.Apps.Shared;
+﻿using GLab.Apps.Shared;
 using GLab.Domains.Models.Shared;
 
 namespace GLab.Impl.Services.Shared

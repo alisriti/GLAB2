@@ -1,5 +1,4 @@
-﻿using GLab.Apps.Laboratoires;
-using GLab.Domains.Models.Laboratoires;
+﻿using GLab.Domains.Models.Laboratoires;
 
 namespace GLAB2.Views.Pages.Laboratoires
 {
