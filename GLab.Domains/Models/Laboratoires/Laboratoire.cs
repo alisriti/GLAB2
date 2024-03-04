@@ -1,4 +1,6 @@
-﻿namespace GLab.Domains.Models.Laboratoires
+﻿using System.ComponentModel.Design;
+
+namespace GLab.Domains.Models.Laboratoires
 {
     public class Laboratoire
     {
@@ -15,5 +17,13 @@
         public string Email { get; set; }
         public string WebSite { get; set; }
         public byte[] Logo { get; set; } = new byte[] { };
+        public LaboratoireStatus Status { get; set; }
+    }
+
+    public enum LaboratoireStatus
+    {
+        Active = 1,
+        Bloqued = 0,
+        Deleted = -1
     }
 }

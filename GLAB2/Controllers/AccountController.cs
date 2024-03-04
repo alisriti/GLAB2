@@ -5,11 +5,18 @@ using System.Security.Claims;
 
 namespace GLAB2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("identity")]
     [ApiController]
     public class AccountController : ControllerBase
     {
-        [HttpPost]
+        [HttpGet, Route("getdata")]
+        public string GetData()
+        {
+            return
+                "{\"UserId\":\"fdb96e0a-72a6-4a26-9fe2-2c08117153e7\",\"UserName\":\"Ali Sriti\",\"Email\":\"alisriti@gmail.com\",\"Roles\":[{\"RoleId\":1,\"RoleName\":\"mon role\"}]}";
+        }
+
+        [HttpPost, Route("dologin")]
         public async Task DoLogin(LoginClaims claims)
         {
             IEnumerable<Claim>? identityClaims = getClaims(claims);

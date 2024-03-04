@@ -21,6 +21,9 @@ namespace GLAB.UI.Laboratoires
 
         private Universite myUniv;
 
+        private bool hasError = false;
+        private string errorMessage;
+
         protected override void OnInitialized()
         {
             myUniv = univService.GetMyUniv();
@@ -32,21 +35,31 @@ namespace GLAB.UI.Laboratoires
 
         private async Task createLab()
         {
-            Laboratoire laboratoireToCreate = new Laboratoire()
+            hasError = false;
+            errorMessage = default;
+            try
             {
-                Id = Guid.NewGuid().ToString(),
-                Acronyme = newLab.Acronyme,
-                Nom = newLab.Nom,
-                Adresse = newLab.Adresse,
-                //Adresse = string.IsNullOrWhiteSpace(newLab.Adresse)
-                //    ? myUniv.Adresse
-                //    : newLab.Adresse,
-                Email = newLab.Email,
-                Universite = myUniv.PIC,
-                DateCreation = DateTime.Now
-            };
+                Laboratoire laboratoireToCreate = new Laboratoire()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Acronyme = newLab.Acronyme,
+                    Nom = newLab.Nom,
+                    Adresse = newLab.Adresse,
+                    //Adresse = string.IsNullOrWhiteSpace(newLab.Adresse)
+                    //    ? myUniv.Adresse
+                    //    : newLab.Adresse,
+                    Email = newLab.Email,
+                    Universite = myUniv.PIC,
+                    DateCreation = DateTime.Now
+                };
 
-            await labService.CreateLaboratoire(laboratoireToCreate);
+                await labService.CreateLaboratoire(laboratoireToCreate);
+            }
+            catch (Exception e)
+            {
+                errorMessage = $"Erreur de la création du laboratoire : {e.Message}";
+                hasError = true;
+            }
         }
     }
 }

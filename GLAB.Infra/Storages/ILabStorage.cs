@@ -8,7 +8,9 @@ public interface ILabStorage
 
     Task<Laboratoire> SelectLaboratoireById(string id);
 
-    Task<bool> LaboratoireExists(string id);
+    Task<bool> LaboratoireExists(string acronyme);
 
     Task InsertLaboratoire(Laboratoire laboratoire);
+
+    Task<bool> UpdateLaboratoire(Laboratoire laboratoire);
 }

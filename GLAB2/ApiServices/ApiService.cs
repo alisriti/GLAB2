@@ -1,28 +1,26 @@
 ﻿using GLab.Domains.Models.Users;
 using System.Text;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GLAB2.ApiServices
 {
     public class ApiService
     {
-        private readonly IHttpClientFactory _factory;
+        private readonly HttpClient client;
 
-        public ApiService(IHttpClientFactory factory)
+        public ApiService(NavigationManager navigationManager)
         {
-            _factory = factory;
+            client = new HttpClient();
+            client.BaseAddress = new Uri(navigationManager?.BaseUri);
         }
 
-        [HttpPost]
-        public async ValueTask<IActionResult> SignIn(LoginClaims claims)
+        public async ValueTask<ActionResult> SignIn(LoginClaims claims)
         {
-            var client = _factory.CreateClient("Account");
-
             var content = new StringContent(JsonSerializer.Serialize(claims), Encoding.UTF8, "application/json");
 
-            var response = await client.PostAsync(client.BaseAddress, content);
+            var response = await client.PostAsync("identity/dologin", content);
 
             return response.IsSuccessStatusCode ? new OkResult() : new BadRequestResult();
         }

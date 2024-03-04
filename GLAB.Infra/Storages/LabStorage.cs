@@ -54,9 +54,28 @@ namespace GLAB.Infra.Storages
             return getLaboratoireFromDataRow(ds.Rows[0]);
         }
 
-        public async Task<bool> LaboratoireExists(string id)
+        public async Task<bool> LaboratoireExists(string acronyme)
         {
-            return await SelectLaboratoireById(id) != null;
+            return await SelectLaboratoireByAcronyme(acronyme) != null;
+        }
+
+        private async Task<Laboratoire> SelectLaboratoireByAcronyme(string acronyme)
+        {
+            Laboratoire labos = new Laboratoire();
+            await using var connection = new SqlConnection(connectionString);
+            SqlCommand cmd = new("select * from vwLabos where lower(Acronyme) = lower(@aAcronyme)", connection);
+            cmd.Parameters.AddWithValue("@aAcronyme", acronyme);
+
+            DataTable ds = new();
+            SqlDataAdapter da = new(cmd);
+
+            connection.Open();
+            da.Fill(ds);
+
+            if (ds.Rows.Count == 0)
+                return null;
+
+            return getLaboratoireFromDataRow(ds.Rows[0]);
         }
 
         public async Task InsertLaboratoire(Laboratoire laboratoire)
@@ -74,6 +93,24 @@ namespace GLAB.Infra.Storages
 
             connection.Open();
             await cmd.ExecuteNonQueryAsync();
+        }
+
+        public async Task<bool> UpdateLaboratoire(Laboratoire laboratoire)
+        {
+            await using var connection = new SqlConnection(connectionString);
+            SqlCommand cmd =
+                new(
+                    "update dbo.LABORATOIRES set Acronyme =@aAcronyme, Nom = @aNom, Address = @aAdresse WHERE Id = @aIDd ", connection);
+
+            cmd.Parameters.AddWithValue("@aId", laboratoire.Id);
+
+            cmd.Parameters.AddWithValue("@aAcronyme", laboratoire.Acronyme);
+            cmd.Parameters.AddWithValue("@aNom", laboratoire.Nom);
+            cmd.Parameters.AddWithValue("@aAddress", laboratoire.Adresse);
+
+            connection.Open();
+            await cmd.ExecuteNonQueryAsync();
+            return true;
         }
 
         private static Laboratoire getLaboratoireFromDataRow(DataRow row)

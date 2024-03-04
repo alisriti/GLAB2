@@ -7,6 +7,8 @@ using GLab.Impl.Services.Laboratoires;
 using GLab.Impl.Services.Shared;
 using GLab.Impl.Services.Users;
 using GLAB.Infra.Storages;
+using GLAB2.ApiServices;
+using Microsoft.AspNetCore.CookiePolicy;
 using Users.Infra.Storages;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,14 +23,14 @@ builder.Services.AddScoped<IUnivService, UnivService>();
 
 builder.Services.AddScoped<IUserStorage, UserStorage>();
 builder.Services.AddScoped<IUserService, UserService>();
-
 builder.Services.AddScoped<IAccountService, AccountService>();
-
-builder.Services.AddHttpClient("accounts", (client) =>
+builder.Services.AddScoped<ApiService>();
+builder.Services.Configure<CookiePolicyOptions>(options =>
 {
-    client.BaseAddress = new Uri("api/Account");
+    options.MinimumSameSitePolicy = SameSiteMode.Strict;
+    options.HttpOnly = HttpOnlyPolicy.None;
+    options.Secure = CookieSecurePolicy.Always;
 });
-
 builder.Services.AddAuthentication("Cookies").AddCookie(options =>
 {
     options.Cookie.Name = "glab.cookie";
@@ -48,10 +50,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllers();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

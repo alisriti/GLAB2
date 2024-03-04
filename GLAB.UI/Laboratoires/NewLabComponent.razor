@@ -7,6 +7,12 @@
             Nouveal laboratoire.
         </h3>
     </div>
+    @if (hasError)
+    {
+        <div class="alert alert-warning">
+            @errorMessage
+        </div>
+    }
     <div class="card-body">
         <ValidationSummary />
         <div>

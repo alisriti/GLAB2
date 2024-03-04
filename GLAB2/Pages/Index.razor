@@ -1,10 +1,31 @@
 ﻿@page "/"
-
+@using GLAB2.ApiServices
+@using GLab.Domains.Models.Users
+@using Microsoft.AspNetCore.Http.HttpResults
+@using Microsoft.AspNetCore.Mvc
+@inject ApiService apiServices;
 <PageTitle>Index</PageTitle>
 
 <PageHeader Title="Hello, world!"></PageHeader>
 
+<button class="btn btn-success" @onclick=@seConnecter> se connecter</button>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code
+{
+    private string? texte = string.Empty;
+    private async Task seConnecter()
+    {
+        LoginClaims claims = new LoginClaims()
+        {
+            Email = "alisriti@gmail.com",
+            UserId = Guid.NewGuid().ToString(),
+            UserName = "Ali Sriti",
+            Roles = new List<ApplicationRole>()
+            {
+                new(roleId: 1, roleName: "mon role")
+            }
+        };
+        var result = await apiServices.SignIn(claims);
+        texte = result.ToString();
+    }
+}
