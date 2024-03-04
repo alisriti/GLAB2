@@ -7,7 +7,7 @@
         public string Password { get; set; }
         public UserState State { get; set; }
 
-        private User(string userId, string userName, string password, UserState state)
+        private User(string userId, string userName, string password, UserState state = UserState.Bloqued)
         {
             UserId = userId;
             UserName = userName;
@@ -26,6 +26,11 @@
         public static User Create(string userId, string userName, UserState state)
         {
             return new User(userId, userName, state);
+        }
+
+        public static User Create(string userId, string userName, string password)
+        {
+            return new User(userId, userName, password);
         }
 
         private void changeState(UserState state)

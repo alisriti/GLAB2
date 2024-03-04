@@ -9,6 +9,9 @@ namespace Users.Infra.Storages
     {
         private string connectionString;
 
+        private const string insertUserCommand =
+            "Insert USERS(UserId, UserName, Password) VALUES(@aId, @aUserName, @aPassword)";
+
         public UserStorage(IConfiguration configuration)
         {
             connectionString = configuration.GetConnectionString("IdentityDB");
@@ -51,6 +54,20 @@ namespace Users.Infra.Storages
             if (ds.Rows.Count == 0)
                 return default;
             return (string)ds.Rows[0]["Password"];
+        }
+
+        public async Task<bool> InsertUser(User user)
+        {
+            await using var connection = new SqlConnection(connectionString);
+
+            SqlCommand cmd = new(insertUserCommand, connection);
+            cmd.Parameters.AddWithValue("@aId", user.UserId);
+            cmd.Parameters.AddWithValue("@aUserName", user.UserName);
+            cmd.Parameters.AddWithValue("@aPassword", user.Password);
+
+            connection.Open();
+            int insertedRows = await cmd.ExecuteNonQueryAsync();
+            return (insertedRows > 0);
         }
 
         public async Task<User> SelectUserByUserName(string userName)

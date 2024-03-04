@@ -42,4 +42,28 @@ public class UserService : IUserService
             }
         };
     }
+
+    public async Task CreateUser(User user)
+    {
+        validateUserForCreation(user);
+        validateUserNameDoesNotExists(user.UserName);
+        await userStorage.InsertUser(user);
+    }
+
+    private void validateUserNameDoesNotExists(string userName)
+    {
+        if (userStorage.SelectUserByUserName(userName).GetAwaiter().GetResult() is not null)
+            throw new Exception($"Username {userName} existe déja");
+    }
+
+    private void validateUserForCreation(User user)
+    {
+        if (user is null)
+            throw new Exception("Aucun utilisateur n'est fourni");
+
+        if (string.IsNullOrWhiteSpace(user.UserId) ||
+            string.IsNullOrWhiteSpace(user.UserName) ||
+            string.IsNullOrWhiteSpace(user.Password))
+            throw new Exception("Erreur de validation de l'utilisateur");
+    }
 }

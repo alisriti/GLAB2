@@ -11,4 +11,6 @@ public interface IUserService
     Task<bool> ValidatePassword(string userId, string password);
 
     Task<List<ApplicationRole>> GetRoles();
+
+    Task CreateUser(User user);
 }

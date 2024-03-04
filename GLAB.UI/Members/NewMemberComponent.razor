@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+<EditForm Model=@memberModel OnValidSubmit=@createMember>
+    <DataAnnotationsValidator />
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                Nouveal laboratoire.
+            </h3>
+        </div>
+        @if (hasError)
+        {
+            <div class="alert alert-warning">
+                @errorMessage
+            </div>
+        }
+        <div class="card-body">
+            <ValidationSummary />
+            <div>
+                <label>Nom</label>
+                <input class="form-control" @bind=@memberModel.Nom />
+            </div>
+            <div>
+                <label>Prénom</label>
+                <input class="form-control" @bind=@memberModel.Prenom />
+            </div>
+           
+            <div>
+                <label>Email </label>
+                <input class="form-control" @bind=@memberModel.Email />
+            </div>
+            <div>
+                <label>Equipe</label>
+                <input class="form-control" @bind=@memberModel.Equipe />
+            </div>
+        </div>
+        <button type="submit"  class="btn btn-success" >Enregistrer</button>
+    
+    </div>
+</EditForm>

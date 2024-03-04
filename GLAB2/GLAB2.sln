@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GLAB.UI", "..\GLAB.UI\GLAB.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{824BDAD1-7D17-4DBE-9280-37FF0B588372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Users.Infra", "..\Users.Infra\Users.Infra.csproj", "{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Users.Infra", "..\Users.Infra\Users.Infra.csproj", "{76EF78B3-D5FB-4E23-96BB-006B27F5AC90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

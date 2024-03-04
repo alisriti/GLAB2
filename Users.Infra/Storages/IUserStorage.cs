@@ -9,4 +9,6 @@ public interface IUserStorage
     Task<User> SelectUserByUserName(string userName);
 
     Task<string> SelectUserPassword(string userId);
+
+    Task<bool> InsertUser(User user);
 }
