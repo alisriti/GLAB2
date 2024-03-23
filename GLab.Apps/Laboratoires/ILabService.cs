@@ -7,7 +7,7 @@ public interface ILabService
 {
     Task<List<Laboratoire>> GetLaboratoires();
 
-    Task<Laboratoire> GetLaboratoireById(string id);
+    Task<Result<Laboratoire>> GetLaboratoireById(string id);
 
     Task<bool> LaboratoireExists(string id);
 

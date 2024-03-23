@@ -1,0 +1,20 @@
+﻿@typeparam TItem
+@ListTitle
+@if (Items.Any())
+{
+    <ul class=@ListClass>
+        @foreach (TItem item in Items)
+        {
+            @ItemTemplate(item)
+        }
+    </ul>
+}
+else
+{
+    if (!string.IsNullOrWhiteSpace(EmptyListMessage))
+    {
+        <div class=@emptyListClass>
+            @EmptyListMessage
+        </div>
+    }
+}

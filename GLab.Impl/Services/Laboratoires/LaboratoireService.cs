@@ -1,4 +1,5 @@
 ﻿using GLab.Apps.Laboratoires;
+using GLab.Domains;
 using GLab.Domains.Models.Laboratoires;
 using GLab.Domains.Models.Shared;
 using GLAB.Infra.Storages;
@@ -14,9 +15,10 @@ namespace GLab.Impl.Services.Laboratoires
             this.labStorage = labStorage;
         }
 
-        public async Task<Laboratoire> GetLaboratoireById(string id)
+        public async Task<Result<Laboratoire>> GetLaboratoireById(string id)
         {
-            return await labStorage.SelectLaboratoireById(id);
+            var laboratoire =  await labStorage.SelectLaboratoireById(id);
+            return Result<Laboratoire>.Succes(laboratoire);
         }
 
         public async Task<bool> LaboratoireExists(string acronyme)

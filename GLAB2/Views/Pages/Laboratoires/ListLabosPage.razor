@@ -26,9 +26,8 @@
 <br/>
 <br/>
 
-
-<MyCard Title="Liste des laboratoires" ShowFooter="false">
-    <CardBody>
-        <ListLabComp Laboratoires=@labos OnLabSelected=@gotoLab/>
-    </CardBody>
-</MyCard>
+<ListView  Items=@labos Context="item">
+    <ItemTemplate>
+       
+    </ItemTemplate>
+</ListView>
